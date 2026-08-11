@@ -1,0 +1,916 @@
+<!DOCTYPE html>
+<html lang="id" data-theme="light">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BUMDes Sipodalle Batetangnga Sejahtera - Portal Resmi & Sistem Informasi Keuangan Desa</title>
+  <meta name="description"
+    content="Website Resmi BUMDes Sipodalle Batetangnga Sejahtera (Desa Batetangnga, Kec. Binuang, Kab. Polewali Mandar). Pengelolaan Pasar Desa, Budidaya Ikan Nila, dan Laporan Keuangan Terintegrasi PPAK.">
+  <meta name="keywords"
+    content="BUMDes Sipodalle, Batetangnga, Binuang, Polman, Pasar Desa Batetangnga, Budidaya Ikan Nila, Laporan Keuangan BUMDes, PPAK BUMDes">
+  <meta name="author" content="BUMDes Sipodalle Batetangnga Sejahtera">
+
+  <!-- Open Graph Meta -->
+  <meta property="og:title" content="BUMDes Sipodalle Batetangnga Sejahtera">
+  <meta property="og:description"
+    content="Pengelolaan Pasar Desa & Sentra Budidaya Ikan Nila dengan Laporan Keuangan Terbuka PPAK.">
+  <meta property="og:type" content="website">
+
+  <!-- Fonts & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- Chart.js CDN for Financial Analytics -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <!-- App Stylesheets -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+
+<body>
+
+  <!-- Ambient Light Effect Orbs -->
+  <div class="bg-ambient">
+    <div class="ambient-orb ambient-orb-1"></div>
+    <div class="ambient-orb ambient-orb-2"></div>
+    <div class="ambient-orb ambient-orb-3"></div>
+  </div>
+
+  <!-- Main Sticky Header & Navigation (Clean White Template 2.0 Style) -->
+  <header class="main-header">
+    <div class="navbar-wrapper">
+      <nav class="navbar">
+        <a href="#dashboard" class="navbar-brand" data-view="dashboard" id="navBrandLogo">
+          <div class="brand-logo">
+            <img src="assets/images/logo.png" alt="Logo BUMDes Sipodalle Batetangnga Sejahtera">
+          </div>
+          <div class="brand-info">
+            <div class="brand-title">BUMDes <span style="font-weight: 400; font-size: 0.95rem; color: #047857;">Maju Bersama</span></div>
+            <div class="brand-subtitle">Portal Resmi Desa Mandiri</div>
+          </div>
+        </a>
+
+        <!-- Desktop Navigation Menu -->
+        <ul class="nav-menu" id="navMenu">
+          <li>
+            <a class="nav-link active" data-view="dashboard" id="nav-dashboard">
+              BERANDA
+            </a>
+          </li>
+          
+          <!-- Dropdown Menu PROFIL (Unit Usaha & Struktur Pengurus) -->
+          <li class="nav-item-dropdown">
+            <a class="nav-link dropdown-toggle" id="nav-profile" data-view="profile" role="button">
+              PROFIL <i class="fa-solid fa-chevron-down dropdown-arrow"></i>
+            </a>
+            <ul class="dropdown-menu">
+              <li>
+                <a class="dropdown-item" data-view="profile" data-target-anchor="section-profile-about">
+                  <i class="fa-solid fa-landmark"></i> Profil & Visi Misi
+                </a>
+              </li>
+              <li>
+                <a class="dropdown-item" data-view="profile" data-target-anchor="section-profile-structure">
+                  <i class="fa-solid fa-sitemap"></i> Struktur Pengurus
+                </a>
+              </li>
+              <li>
+                <a class="dropdown-item" data-view="profile" data-target-anchor="section-profile-units">
+                  <i class="fa-solid fa-shop"></i> Unit Usaha Kami
+                </a>
+              </li>
+            </ul>
+          </li>
+
+          <li>
+            <a class="nav-link" data-view="finance" id="nav-finance">
+              TRANSPARANSI
+            </a>
+          </li>
+          <li>
+            <a class="nav-link" data-view="news" id="nav-news">
+              KABAR DESA
+            </a>
+          </li>
+          <li>
+            <a class="nav-link" data-view="events" id="nav-events">
+              KONTAK
+            </a>
+          </li>
+        </ul>
+
+        <!-- Nav Actions -->
+        <div class="nav-actions">
+          <!-- Direct Quick Financial App Trigger -->
+          <button class="btn-financial-quick" id="btnQuickFinNav" title="Buka Aplikasi PPAK Keuangan BUMDes">
+            <i class="fa-solid fa-wallet"></i>
+            <span>PPAK Cloud</span>
+          </button>
+
+          <!-- Search / Quick Filter -->
+          <button class="btn-search-nav" id="btnNavSearch" title="Cari Berita & Data" onclick="App.navigate('news')">
+            <i class="fa-solid fa-magnifying-glass"></i>
+          </button>
+
+          <!-- Dark/Light Mode Switcher -->
+          <button class="theme-toggle-btn" id="themeToggleBtn" title="Ganti Tema">
+            <i class="fa-solid fa-moon"></i>
+          </button>
+
+          <!-- Mobile Drawer Hamburger -->
+          <button class="mobile-menu-btn" id="mobileMenuBtn" title="Menu Navigasi">
+            <i class="fa-solid fa-bars"></i>
+          </button>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- =========================================================
+       MAIN CONTENT CONTAINER (SPA VIEWS)
+       ========================================================= -->
+  <main class="container">
+
+    <!-- =======================================================
+         1. VIEW: DASHBOARD (BERANDA) - TEMPLATE VERSI 2.0
+         ======================================================= -->
+    <section class="view-section active-view" id="view-dashboard">
+
+      <!-- 1. Hero Carousel Slider -->
+      <div class="hero-carousel-container">
+        <div class="hero-slider-wrap">
+          <img src="assets/images/bumdes_center_hero.jpg" alt="Pusat BUMDes Sipodalle Batetangnga" class="hero-slider-img">
+          
+          <!-- Slider Navigation Controls -->
+          <button class="slider-control-btn slider-btn-prev" title="Sebelumnya">
+            <i class="fa-solid fa-chevron-left"></i>
+          </button>
+          <button class="slider-control-btn slider-btn-next" title="Selanjutnya">
+            <i class="fa-solid fa-chevron-right"></i>
+          </button>
+
+          <!-- Slider Indicators -->
+          <div class="slider-dots">
+            <span class="slider-dot active"></span>
+            <span class="slider-dot"></span>
+            <span class="slider-dot"></span>
+            <span class="slider-dot"></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2. Side-by-Side: FILOSOFI KAMI & UNIT USAHA UNGGULAN -->
+      <div class="filosofi-units-wrapper">
+        <!-- Left: Filosofi Kami -->
+        <div class="filosofi-col">
+          <h3 class="section-column-heading">FILOSOFI KAMI</h3>
+          <div class="filosofi-card">
+            <div class="filosofi-img-wrap">
+              <img src="assets/images/filosofi_signboard.jpg" alt="Filosofi BUMDes Sipodalle Batetangnga">
+            </div>
+            <p class="filosofi-text">
+              Membangun Desa Mandiri melalui pengelolaan pasar rakyat yang berdaya saing dan perikanan air tawar yang berkelanjutan.
+            </p>
+          </div>
+        </div>
+
+        <!-- Right: Unit Usaha Unggulan (4 Minimalist Rounded Cards) -->
+        <div class="units-col">
+          <h3 class="section-column-heading">UNIT USAHA UNGGULAN</h3>
+          <div class="units-row-grid">
+            <!-- Unit 1: Pasar Desa -->
+            <div class="unit-pill-card" onclick="App.navigate('profile')">
+              <div class="unit-pill-icon-circle">
+                <i class="fa-solid fa-shop"></i>
+              </div>
+              <h4 class="unit-pill-title">PASAR DESA</h4>
+              <p class="unit-pill-desc">Retribusi harian dan sewa kios niaga pedagang.</p>
+            </div>
+
+            <!-- Unit 2: Perikanan -->
+            <div class="unit-pill-card" onclick="App.navigate('profile')">
+              <div class="unit-pill-icon-circle">
+                <i class="fa-solid fa-fish"></i>
+              </div>
+              <h4 class="unit-pill-title">PERIKANAN AIR</h4>
+              <p class="unit-pill-desc">Budidaya ikan nila 1.200 m² kolam Rawa Bangun.</p>
+            </div>
+
+            <!-- Unit 3: Pertanian -->
+            <div class="unit-pill-card" onclick="App.navigate('profile')">
+              <div class="unit-pill-icon-circle">
+                <i class="fa-solid fa-seedling"></i>
+              </div>
+              <h4 class="unit-pill-title">PERTANIAN</h4>
+              <p class="unit-pill-desc">Hasil bumi buah durian & langsat Batetangnga.</p>
+            </div>
+
+            <!-- Unit 4: PPAK Keuangan -->
+            <div class="unit-pill-card" onclick="App.navigate('finance')">
+              <div class="unit-pill-icon-circle">
+                <i class="fa-solid fa-chart-pie"></i>
+              </div>
+              <h4 class="unit-pill-title">PPAK KEUANGAN</h4>
+              <p class="unit-pill-desc">Sistem akuntansi kas & PADes terpadu online.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3. Dark Section: TRANSPARANSI KEUANGAN & STATISTIK DESA -->
+      <div class="transparansi-stats-dark-panel">
+        <!-- Sub-Card 1: Transparansi Keuangan -->
+        <div class="ts-subcard">
+          <div class="ts-header">
+            <h3 class="ts-title">TRANSPARANSI KEUANGAN</h3>
+            <span class="badge badge-amber"><i class="fa-solid fa-bolt"></i> Realtime PPAK</span>
+          </div>
+
+          <!-- Top Metrics Bar -->
+          <div class="ts-metrics-grid">
+            <div class="ts-metric-box">
+              <span class="tsm-label">Penyertaan Modal Desa (PMD)</span>
+              <span class="tsm-val">Rp 78.176.600</span>
+            </div>
+            <div class="ts-metric-box">
+              <span class="tsm-label">Total Aset BUMDes</span>
+              <span class="tsm-val" style="color: #34d399;">Rp 107.615.936</span>
+            </div>
+          </div>
+
+          <!-- Live Mini Canvas Chart -->
+          <div style="position: relative; height: 190px; margin: 1rem 0;">
+            <canvas id="dashMiniChart"></canvas>
+          </div>
+
+          <div class="ts-footer-action">
+            <span style="font-size: 0.8rem; color: #94a3b8;"><i class="fa-solid fa-shield-halved"></i> Audit SAK ETAP BUMDes 2026</span>
+            <button class="btn btn-primary btn-sm" onclick="App.navigate('finance')">
+              <i class="fa-solid fa-arrow-up-right-from-square"></i> Buka Detail PPAK
+            </button>
+          </div>
+        </div>
+
+        <!-- Sub-Card 2: Statistik Desa -->
+        <div class="ts-subcard">
+          <div class="ts-header">
+            <h3 class="ts-title">STATISTIK DESA</h3>
+            <span class="badge badge-emerald"><i class="fa-solid fa-circle-check"></i> Data Terverifikasi</span>
+          </div>
+
+          <div class="ts-stats-counter-row">
+            <div class="tsc-item">
+              <div class="tsc-number">20</div>
+              <div class="tsc-label">Kios Pasar Aktif</div>
+            </div>
+            <div class="tsc-item">
+              <div class="tsc-number">15.000</div>
+              <div class="tsc-label">Benih Ikan Nila</div>
+            </div>
+            <div class="tsc-item">
+              <div class="tsc-number">50%</div>
+              <div class="tsc-label">Alokasi PADes</div>
+            </div>
+          </div>
+
+          <!-- Mini Transaction / Journal Audit Log -->
+          <div class="ts-journal-list">
+            <div class="ts-journal-item">
+              <div>
+                <div class="tsj-title">Penyertaan Modal Desa dari APBDes</div>
+                <div class="tsj-date">02 Jan 2026 • Bank BPD Sulbar</div>
+              </div>
+              <div class="tsj-amount" style="color: #34d399;">+Rp 78.176.600</div>
+            </div>
+            <div class="ts-journal-item">
+              <div>
+                <div class="tsj-title">Pembelian Benih Ikan Nila 15.000 Ekor</div>
+                <div class="tsj-date">10 Jan 2026 • Kolam Rawa Bangun</div>
+              </div>
+              <div class="tsj-amount" style="color: #fbbf24;">-Rp 22.500.000</div>
+            </div>
+            <div class="ts-journal-item">
+              <div>
+                <div class="tsj-title">Pengadaan Mesin Kincir Air Kolam</div>
+                <div class="tsj-date">15 Jan 2026 • Peralatan Usaha</div>
+              </div>
+              <div class="tsj-amount" style="color: #fbbf24;">-Rp 6.890.000</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4. Section: KABAR DESA TERBARU -->
+      <div class="dashboard-news-section">
+        <div class="section-title-between">
+          <h3 class="section-column-heading">KABAR DESA TERBARU</h3>
+          <a href="#news" data-view="news" class="link-view-all">Lihat Semua Berita <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+        <div class="dash-news-grid-4" id="dashboardNewsContainer">
+          <!-- Populated by app.js -->
+        </div>
+      </div>
+
+      <!-- 5. Section: GALERI KEGIATAN -->
+      <div class="galeri-kegiatan-section">
+        <h3 class="section-column-heading">GALERI KEGIATAN</h3>
+        <div class="galeri-grid-4">
+          <div class="galeri-card">
+            <img src="assets/images/unit_pasar.jpg" alt="Pasar Desa Batetangnga">
+            <div class="galeri-overlay">
+              <span>Pasar Desa Batetangnga</span>
+            </div>
+          </div>
+          <div class="galeri-card">
+            <img src="assets/images/unit_ikan_nila.jpg" alt="Budidaya Ikan Nila">
+            <div class="galeri-overlay">
+              <span>Budidaya Ikan Nila Rawa Bangun</span>
+            </div>
+          </div>
+          <div class="galeri-card">
+            <img src="assets/images/bumdes_center_hero.jpg" alt="Sentra BUMDes">
+            <div class="galeri-overlay">
+              <span>Sentra Niaga & Kantor BUMDes</span>
+            </div>
+          </div>
+          <div class="galeri-card">
+            <img src="assets/images/financial_preview.jpg" alt="Transparansi PPAK">
+            <div class="galeri-overlay">
+              <span>Pelaporan Keuangan PPAK</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- =======================================================
+         2. VIEW: PROFIL BUMDES
+         ======================================================= -->
+    <section class="view-section" id="view-profile">
+
+      <div class="section-header">
+        <span class="section-tag"><i class="fa-solid fa-landmark"></i> Tentang Kami</span>
+        <h2 class="section-title">Profil BUMDes Sipodalle Batetangnga Sejahtera</h2>
+        <p class="section-desc">Kecamatan Binuang, Kabupaten Polewali Mandar, Provinsi Sulawesi Barat.</p>
+      </div>
+
+      <!-- About & History Card -->
+      <div class="glass-panel profile-hero-card" id="section-profile-about">
+        <div class="profile-about-grid">
+          <div class="profile-about-text">
+            <span class="badge badge-emerald" style="margin-bottom: 0.85rem;">Badan Usaha Milik Desa Batetangnga</span>
+            <h3>Sinergi Pasar Desa & Budidaya Perikanan Unggul</h3>
+            <p>
+              BUMDes Sipodalle Batetangnga Sejahtera hadir sebagai motor penggerak ekonomi kerakyatan di Desa
+              Batetangnga. Kami memadukan pengelolaan Pasar Desa sebagai pusat sentra jual-beli hasil bumi dan
+              buah-buahan lokal dengan pengembangan budidaya pembesaran ikan nila air tawar alami.
+            </p>
+            <p>
+              Dengan tata kelola yang transparan, didukung pencatatan akuntansi digital (PPAK), kami bertekad
+              memaksimalkan Pendapatan Asli Desa (PADes) guna mewujudkan kemakmuran seluruh masyarakat Batetangnga.
+            </p>
+            <div class="legal-badge-box">
+              <i class="fa-solid fa-certificate"></i>
+              <div>
+                <div class="legal-title">Badan Hukum Resmi Kemenkumham RI</div>
+                <div class="legal-number">SK No. AHU-01166.AH.01.33.TAHUN 2023</div>
+              </div>
+            </div>
+          </div>
+          <div
+            style="border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-lg); text-align: center; background: var(--bg-surface-elevated); padding: 1.5rem; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+            <img src="assets/images/logo.png" alt="Logo Resmi BUMDes Sipodalle"
+              style="max-width: 240px; margin-bottom: 1rem; border-radius: 50%; box-shadow: var(--shadow-glow);">
+            <div style="font-weight: 800; font-size: 1.25rem;">BUMDes Sipodalle</div>
+            <div style="font-size: 0.85rem; color: var(--text-muted);">Sipodalle Batetangnga Sejahtera</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Vision & Mission -->
+      <div class="vision-mission-grid">
+        <div class="vision-card">
+          <h3><i class="fa-solid fa-bullseye"></i> Visi Kami</h3>
+          <p>
+            "Menjadi badan usaha desa yang unggul, profesional, dan transparan dalam menggerakkan ekonomi masyarakat
+            melalui optimalisasi potensi pasar desa dan sentra budidaya perikanan air tawar yang berdaya saing."
+          </p>
+        </div>
+
+        <div class="mission-card">
+          <h3><i class="fa-solid fa-list-check"></i> Misi Utama</h3>
+          <ul class="mission-list">
+            <li>
+              <span class="mission-num">1</span>
+              <span>Mengelola Pasar Desa Batetangnga secara modern, higienis, tertib, dan berkeadilan bagi
+                pedagang.</span>
+            </li>
+            <li>
+              <span class="mission-num">2</span>
+              <span>Mengembangkan sentra pembesaran ikan nila berkualitas tinggi dengan air pegunungan yang
+                melimpah.</span>
+            </li>
+            <li>
+              <span class="mission-num">3</span>
+              <span>Menerapkan transparansi tata kelola keuangan digital melalui Sistem Informasi Akuntansi PPAK
+                BUMDes.</span>
+            </li>
+            <li>
+              <span class="mission-num">4</span>
+              <span>Meningkatkan Pendapatan Asli Desa (PADes) serta membuka peluang kerja dan kemitraan bagi
+                warga.</span>
+            </li>
+            <li>
+              <span class="mission-num">5</span>
+              <span>Membangun rantai pasok pemasaran hasil perikanan dan komoditas pasar ke tingkat regional.</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Organization Structure & Team (10 Posisi Sesuai Regulasi) -->
+      <div class="dashboard-section" id="section-profile-structure">
+        <div class="section-header">
+          <span class="section-tag"><i class="fa-solid fa-sitemap"></i> Tata Kelola & Kelembagaan</span>
+          <h2 class="section-title">Struktur Organisasi BUMDes Sipodalle</h2>
+          <p class="section-desc">Bagan hierarki tata kelola sesuai Peraturan Pemerintah No. 11 Tahun 2021 dan AD/ART BUMDes Batetangnga Sejahtera.</p>
+        </div>
+
+        <!-- Visual Hierarchy Organigram Chart -->
+        <div class="organigram-wrapper glass-panel">
+          <!-- Level 1: Musyawarah Desa -->
+          <div class="organigram-tier tier-top">
+            <div class="org-node org-node-supreme">
+              <div class="org-node-icon"><i class="fa-solid fa-users"></i></div>
+              <div class="org-node-role">MUSYAWARAH DESA (MUSDES)</div>
+              <div class="org-node-name">Forum Pengambilan Keputusan Tertinggi BUMDes</div>
+            </div>
+          </div>
+          
+          <div class="org-connector-vertical"></div>
+
+          <!-- Level 2: Penasihat & Badan Pengawas -->
+          <div class="organigram-tier tier-advisory">
+            <div class="org-node org-node-advisory">
+              <div class="org-node-icon"><i class="fa-solid fa-user-tie"></i></div>
+              <div class="org-node-role">PENASIHAT BUMDES</div>
+              <div class="org-node-name">SUMAILA DAMANG (Kepala Desa)</div>
+            </div>
+            <div class="org-node-bridge"><i class="fa-solid fa-arrows-left-right"></i> Koordinasi & Pengawasan <i class="fa-solid fa-arrows-left-right"></i></div>
+            <div class="org-node org-node-supervisory">
+              <div class="org-node-icon"><i class="fa-solid fa-shield-halved"></i></div>
+              <div class="org-node-role">BADAN PENGAWAS</div>
+              <div class="org-node-name">HARISI</div>
+            </div>
+          </div>
+
+          <div class="org-connector-vertical"></div>
+
+          <!-- Level 3: Direktur Utama -->
+          <div class="organigram-tier tier-executive">
+            <div class="org-node org-node-director">
+              <div class="org-node-icon"><i class="fa-solid fa-briefcase"></i></div>
+              <div class="org-node-role">DIREKTUR UTAMA BUMDES</div>
+              <div class="org-node-name">BUSTAMIN B</div>
+            </div>
+          </div>
+
+          <div class="org-connector-vertical"></div>
+
+          <!-- Level 4: Sekretaris, 2 Manager Unit Usaha, Bendahara -->
+          <div class="organigram-tier tier-core">
+            <div class="org-node org-node-staff">
+              <div class="org-node-icon"><i class="fa-solid fa-file-signature"></i></div>
+              <div class="org-node-role">SEKRETARIS</div>
+              <div class="org-node-name">SRI WAHYUNI S.AP</div>
+            </div>
+            <div class="org-node org-node-manager">
+              <div class="org-node-icon"><i class="fa-solid fa-shop"></i></div>
+              <div class="org-node-role">MANAGER UNIT PASAR DESA</div>
+              <div class="org-node-name">M. YUSUF S.Sos</div>
+            </div>
+            <div class="org-node org-node-manager">
+              <div class="org-node-icon"><i class="fa-solid fa-fish"></i></div>
+              <div class="org-node-role">MANAGER UNIT IKAN NILA</div>
+              <div class="org-node-name">KURNIAWAN S.Pi</div>
+            </div>
+            <div class="org-node org-node-staff">
+              <div class="org-node-icon"><i class="fa-solid fa-calculator"></i></div>
+              <div class="org-node-role">BENDAHARA & AKUNTANSI</div>
+              <div class="org-node-name">MASYHUDDIN S</div>
+            </div>
+          </div>
+
+          <div class="org-connector-vertical"></div>
+
+          <!-- Level 5: 3 Divisi Pelaksana Teknis -->
+          <div class="organigram-tier tier-divisions">
+            <div class="org-node org-node-division">
+              <div class="org-node-icon"><i class="fa-solid fa-folder-open"></i></div>
+              <div class="org-node-role">BAGIAN ADMINISTRASI & UMUM</div>
+              <div class="org-node-name">RAHMAT HIDAYAT</div>
+            </div>
+            <div class="org-node org-node-division">
+              <div class="org-node-icon"><i class="fa-solid fa-gears"></i></div>
+              <div class="org-node-role">BAGIAN OPERASIONAL</div>
+              <div class="org-node-name">BUDI SANTOSO</div>
+            </div>
+            <div class="org-node org-node-division">
+              <div class="org-node-icon"><i class="fa-solid fa-bullhorn"></i></div>
+              <div class="org-node-role">BAGIAN PEMASARAN</div>
+              <div class="org-node-name">ANDI NURFADILAH S.E</div>
+            </div>
+          </div>
+        </div>
+
+        <h3 class="section-column-heading" style="margin: 3.5rem 0 1.75rem 0; text-align: center;">
+          Profil Lengkap & Rincian Tugas Pokok Pengurus BUMDes
+        </h3>
+
+        <!-- Detailed Profile Cards -->
+        <div class="team-grid" id="teamContainer">
+          <!-- Populated by app.js -->
+        </div>
+      </div>
+
+      <!-- 2 Business Units in Profile -->
+      <div class="dashboard-section" id="section-profile-units">
+        <div class="section-header">
+          <span class="section-tag"><i class="fa-solid fa-boxes-stacked"></i> Lini Bisnis</span>
+          <h2 class="section-title">Rincian Unit Usaha Aktif</h2>
+          <p class="section-desc">Profil mendalam 2 unit usaha utama yang dikelola BUMDes Sipodalle Batetangnga
+            Sejahtera.</p>
+        </div>
+        <div class="units-grid" id="profileUnitsContainer">
+          <!-- Populated by app.js -->
+        </div>
+      </div>
+
+    </section>
+
+    <!-- =======================================================
+         3. VIEW: BERITA & ARTIKEL (KABAR DESA)
+         ======================================================= -->
+    <section class="view-section" id="view-news">
+
+      <!-- 3A. News List View (Default) -->
+      <div id="newsListView">
+        <div class="section-header">
+          <span class="section-tag"><i class="fa-solid fa-newspaper"></i> Informasi Terkini</span>
+          <h2 class="section-title">Kabar & Publikasi BUMDes</h2>
+          <p class="section-desc">Informasi seputar aktivitas pasar desa, panen budidaya ikan nila, dan capaian BUMDes Sipodalle.</p>
+        </div>
+
+        <!-- Search & Category Filter Bar -->
+        <div class="search-filter-bar">
+          <div class="search-input-box">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="text" id="newsSearchInput" class="search-input" placeholder="Cari berita atau informasi...">
+          </div>
+
+          <div class="category-filter-pills">
+            <button class="filter-pill news-filter-btn active" data-category="all">Semua</button>
+            <button class="filter-pill news-filter-btn" data-category="Perikanan">Perikanan</button>
+            <button class="filter-pill news-filter-btn" data-category="Pasar Desa">Pasar Desa</button>
+            <button class="filter-pill news-filter-btn" data-category="Inovasi">Inovasi</button>
+            <button class="filter-pill news-filter-btn" data-category="Ekonomi">Ekonomi</button>
+          </div>
+        </div>
+
+        <!-- News Cards Grid -->
+        <div class="news-grid" id="newsContainer">
+          <!-- Populated by app.js -->
+        </div>
+      </div>
+
+      <!-- 3B. Dedicated Inline Article Reader (Tanpa Modal Pop-up) -->
+      <div id="newsDetailArticleView" style="display: none;">
+        <div style="margin-bottom: 2rem;">
+          <button class="btn btn-secondary btn-sm" onclick="App.closeNewsDetail()">
+            <i class="fa-solid fa-arrow-left"></i> Kembali ke Daftar Berita
+          </button>
+        </div>
+
+        <article class="glass-panel" style="padding: 3rem 3.5rem; border-radius: var(--radius-xl); background: var(--bg-surface-elevated); max-width: 1000px; margin: 0 auto 3rem auto; box-shadow: var(--shadow-lg);">
+          <div id="inlineArticleContent">
+            <!-- Populated dynamically by app.js -->
+          </div>
+
+          <div style="margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--border-color); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+            <button class="btn btn-secondary" onclick="App.closeNewsDetail()">
+              <i class="fa-solid fa-arrow-left"></i> Kembali ke Daftar Berita
+            </button>
+            <button class="btn btn-primary" onclick="App.navigate('finance')">
+              <i class="fa-solid fa-chart-pie"></i> Lihat Laporan Keuangan BUMDes
+            </button>
+          </div>
+        </article>
+      </div>
+
+    </section>
+
+    <!-- =======================================================
+         4. VIEW: KEGIATAN & AGENDA
+         ======================================================= -->
+    <section class="view-section" id="view-events">
+
+      <div class="section-header">
+        <span class="section-tag"><i class="fa-solid fa-calendar-days"></i> Agenda & Dokumentasi</span>
+        <h2 class="section-title">Kegiatan BUMDes Sipodalle</h2>
+        <p class="section-desc">Jadwal penebaran bibit ikan nila, koordinasi pedagang pasar, dan kegiatan pemeliharaan sarana desa.</p>
+      </div>
+
+      <!-- Filter Bar for Events -->
+      <div class="search-filter-bar" style="justify-content: center;">
+        <div class="category-filter-pills">
+          <button class="filter-pill event-filter-btn active" data-status="all"><i class="fa-solid fa-list"></i> Semua Agenda</button>
+          <button class="filter-pill event-filter-btn" data-status="Mendatang"><i class="fa-regular fa-clock"></i> Segera Hadir</button>
+          <button class="filter-pill event-filter-btn" data-status="Selesai"><i class="fa-solid fa-check"></i> Telah Terlaksana</button>
+        </div>
+      </div>
+
+      <!-- Events Grid -->
+      <div class="events-grid" id="eventsContainer">
+        <!-- Populated by app.js -->
+      </div>
+
+    </section>
+
+    <!-- =======================================================
+         5. VIEW: LAPORAN KEUANGAN (PPAK GOOGLE APPS SCRIPT)
+         ======================================================= -->
+    <section class="view-section" id="view-finance">
+      
+      <div class="section-header">
+        <span class="section-tag"><i class="fa-solid fa-chart-pie"></i> Transparansi & Akuntabilitas</span>
+        <h2 class="section-title">Laporan Keuangan & Integrasi PPAK</h2>
+        <p class="section-desc">Data laporan keuangan publik BUMDes Sipodalle terhubung langsung ke Sistem PPAK Google Apps Script.</p>
+      </div>
+
+      <!-- SPECIAL HERO BANNER FOR PPAK FINANCIAL APP INTEGRATION -->
+      <div class="fin-app-integration-hero">
+        <div class="fin-hero-particles"></div>
+        <div class="fin-app-hero-grid">
+          <div>
+            <div class="fin-app-badge-special">
+              <i class="fa-solid fa-link"></i> Terhubung Langsung ke Sistem Pelaporan PPAK
+            </div>
+            <h2 class="fin-app-hero-title">PPAK BUM Desa Sipodalle Batetangnga Sejahtera</h2>
+            <p class="fin-app-hero-desc">
+              Aplikasi berbasis cloud untuk input jurnal transaksi harian, buku besar, neraca saldo, laba rugi 2 unit usaha (Pasar Desa & Budidaya Ikan Nila), hingga proses tutup buku tahunan.
+            </p>
+
+            <div class="fin-action-box">
+              <div style="font-size: 0.85rem; color: #94a3b8; display: flex; justify-content: space-between; align-items: center;">
+                <span><i class="fa-solid fa-cloud"></i> Link Endpoint Google Apps Script:</span>
+                <span class="badge badge-emerald"><i class="fa-solid fa-circle-dot"></i> Live & Terkoneksi</span>
+              </div>
+              
+              <div class="fin-link-display-row">
+                <i class="fa-solid fa-globe"></i>
+                <span class="dynamic-fin-url">https://script.google.com/macros/s/AKfycbyWAjcU3O2Z6rjZjg3gZsyrpj9YA93npKDt2mlCxDqnG85Sr3zRmYRQLKRb64YtZQw9VA/exec</span>
+              </div>
+
+              <div class="fin-link-buttons-group">
+                <button class="btn btn-open-fin-app" id="btnOpenFinApp">
+                  <i class="fa-solid fa-arrow-up-right-from-square"></i> Buka Aplikasi Keuangan PPAK
+                </button>
+                <button class="btn btn-config-link" id="btnConfigFinLink" title="Ubah atau ganti tautan URL aplikasi">
+                  <i class="fa-solid fa-gear"></i> Atur Link
+                </button>
+                <button class="btn btn-config-link" id="btnCopyFinLink" title="Salin Tautan">
+                  <i class="fa-regular fa-copy"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="fin-app-preview-card">
+            <img src="assets/images/financial_preview.jpg" alt="Preview Dashboard Aplikasi PPAK BUMDes">
+            <div class="preview-overlay-badge">
+              <i class="fa-solid fa-shield-halved" style="color: #34d399;"></i> PPAK BUMDes Sipodalle
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Visual Charts Dashboard -->
+      <div class="charts-grid">
+        <div class="chart-card">
+          <div class="chart-header">
+            <h4><i class="fa-solid fa-chart-line"></i> Tren Pendapatan Pasar, Ikan Nila & Laba 2026</h4>
+            <span class="badge badge-emerald">Jurnal Riil BUMDes</span>
+          </div>
+          <div class="chart-canvas-box">
+            <canvas id="monthlyTrendsChart"></canvas>
+          </div>
+        </div>
+
+        <div class="chart-card">
+          <div class="chart-header">
+            <h4><i class="fa-solid fa-chart-pie"></i> Rasio Omzet 2 Unit Usaha</h4>
+            <span class="badge badge-cyan">Tahun 2026</span>
+          </div>
+          <div class="chart-canvas-box">
+            <canvas id="unitContributionChart"></canvas>
+          </div>
+        </div>
+      </div>
+
+      <!-- Profit Distribution Chart -->
+      <div class="chart-card" style="margin-bottom: 3.5rem;">
+        <div class="chart-header">
+          <h4><i class="fa-solid fa-scale-balanced"></i> Alokasi Pembagian Hasil Usaha Sesuai AD/ART Desa Batetangnga</h4>
+          <span class="badge badge-amber">PADes 50% (Rp 104 Jt)</span>
+        </div>
+        <div class="chart-canvas-box" style="height: 220px;">
+          <canvas id="profitDistributionChart"></canvas>
+        </div>
+      </div>
+
+      <!-- Financial Tables (Income Statement & Balance Sheet) -->
+      <div class="fin-tables-container">
+        <!-- Laba Rugi -->
+        <div class="table-card">
+          <div class="table-header">
+            <h4><i class="fa-solid fa-file-invoice-dollar" style="color: var(--primary-500); margin-right: 0.5rem;"></i> Laporan Laba/Rugi 2 Unit Usaha</h4>
+            <span class="badge badge-emerald">Tahun Buku 2026</span>
+          </div>
+          <table class="custom-table">
+            <thead>
+              <tr>
+                <th>Komponen Pendapatan & Beban</th>
+                <th class="text-right">Nominal (IDR)</th>
+              </tr>
+            </thead>
+            <tbody id="incomeStatementTableBody">
+              <!-- Populated by app.js -->
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Neraca -->
+        <div class="table-card">
+          <div class="table-header">
+            <h4><i class="fa-solid fa-balance-scale" style="color: var(--accent-cyan); margin-right: 0.5rem;"></i> Neraca Ringkas Posisi Keuangan</h4>
+            <span class="badge badge-cyan">Posisi Terkini</span>
+          </div>
+          <table class="custom-table">
+            <thead>
+              <tr>
+                <th>Pos Aset / Kewajiban & Ekuitas</th>
+                <th class="text-right">Nilai (IDR)</th>
+              </tr>
+            </thead>
+            <tbody id="balanceSheetTableBody">
+              <!-- Populated by app.js -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Export & Download Actions -->
+      <div style="background: var(--bg-surface-elevated); border: 1px solid var(--border-color); border-radius: var(--radius-lg); padding: 2rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1.5rem; margin-bottom: 2rem;">
+        <div>
+          <h4 style="margin-bottom: 0.35rem;"><i class="fa-solid fa-file-arrow-down" style="color: var(--primary-500); margin-right: 0.5rem;"></i> Unduh Berkas Laporan Publik BUMDes</h4>
+          <p style="font-size: 0.875rem;">Unduh rekapan laporan keuangan untuk dokumen Musdes atau pertanggungjawaban warga.</p>
+        </div>
+        <div style="display: flex; gap: 0.75rem; flex-wrap: wrap;">
+          <button class="btn btn-secondary" id="btnDownloadPDF">
+            <i class="fa-solid fa-file-pdf" style="color: #ef4444;"></i> Unduh PDF
+          </button>
+          <button class="btn btn-secondary" id="btnDownloadExcel">
+            <i class="fa-solid fa-file-excel" style="color: #10b981;"></i> Unduh Excel (.xlsx)
+          </button>
+        </div>
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- =========================================================
+       MODALS
+       ========================================================= -->
+
+  <!-- Modal Konfigurasi Link Aplikasi Keuangan -->
+  <div class="modal-backdrop" id="finConfigModal">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3><i class="fa-solid fa-sliders" style="color: var(--primary-500); margin-right: 0.5rem;"></i> Konfigurasi Link Aplikasi PPAK</h3>
+        <button class="btn-close-modal modal-close-trigger">&times;</button>
+      </div>
+      <form id="finConfigForm">
+        <div class="modal-body">
+          <p style="font-size: 0.9rem; margin-bottom: 1.5rem; color: var(--text-muted);">
+            Tautan saat ini terhubung langsung ke Google Apps Script <strong>PPAK BUMDes Sipodalle Batetangnga Sejahtera</strong>:
+          </p>
+          <div style="margin-bottom: 1.5rem;">
+            <label for="inputFinUrl" style="display: block; font-weight: 700; font-size: 0.875rem; margin-bottom: 0.5rem;">URL / Link Aplikasi Keuangan (PPAK):</label>
+            <input type="text" id="inputFinUrl" class="search-input" style="padding-left: 1.25rem; font-family: monospace; font-size: 0.95rem;" placeholder="https://script.google.com/macros/s/.../exec" required>
+            <span style="font-size: 0.75rem; color: var(--text-muted); display: block; margin-top: 0.35rem;">
+              Link Google Apps Script tersimpan di browser (localStorage) dan aktif pada seluruh tombol aplikasi keuangan.
+            </span>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" id="btnResetFinUrl">Reset URL BUMDes</button>
+          <button type="button" class="btn btn-secondary modal-close-trigger">Batal</button>
+          <button type="submit" class="btn btn-primary"><i class="fa-solid fa-floppy-disk"></i> Simpan Perubahan</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <!-- =========================================================
+       MAIN FOOTER (TEMPLATE VERSI 2.0 - DEEP FOREST GREEN)
+       ========================================================= -->
+  <footer class="main-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <!-- Col 1: Brand & Quick Links -->
+        <div class="footer-col">
+          <h5 class="footer-heading">QUICK LINKS</h5>
+          <ul class="footer-links-list">
+            <li><a href="#dashboard" data-view="dashboard">Beranda</a></li>
+            <li><a href="#profile" data-view="profile">Unit Usaha</a></li>
+            <li><a href="#profile" data-view="profile">Pengurus</a></li>
+            <li><a href="#finance" data-view="finance">Transparansi</a></li>
+            <li><a href="#news" data-view="news">Kabar Desa</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 2: Contact -->
+        <div class="footer-col">
+          <h5 class="footer-heading">CONTACT</h5>
+          <ul class="footer-contact-info">
+            <li>
+              <i class="fa-solid fa-phone"></i>
+              <span>+62 813-4268-6336</span>
+            </li>
+            <li>
+              <i class="fa-solid fa-envelope"></i>
+              <span>bumdesasipodalle@gmail.com</span>
+            </li>
+            <li>
+              <i class="fa-solid fa-location-dot"></i>
+              <span>Desa Batetangnga, Binuang, Polman</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Col 3: Site Map & Legal -->
+        <div class="footer-col">
+          <h5 class="footer-heading">SITE MAP</h5>
+          <ul class="footer-links-list">
+            <li><a href="#profile" data-view="profile">SK Kemenkumham RI</a></li>
+            <li><a href="#finance" data-view="finance">Standar SAK ETAP</a></li>
+            <li><a href="#finance" data-view="finance">SIA-PPAK Cloud</a></li>
+            <li><a href="#events" data-view="events">Agenda Desa</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 4: Social Media & Brand -->
+        <div class="footer-col">
+          <h5 class="footer-heading">SOCIAL MEDIA</h5>
+          <div class="footer-social-links" style="margin-bottom: 1.5rem;">
+            <a href="https://instagram.com" target="_blank" rel="noreferrer" class="social-icon-btn" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="https://facebook.com" target="_blank" rel="noreferrer" class="social-icon-btn" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="https://youtube.com" target="_blank" rel="noreferrer" class="social-icon-btn" title="YouTube"><i class="fa-brands fa-youtube"></i></a>
+            <a href="https://wa.me/6281342686336" target="_blank" rel="noreferrer" class="social-icon-btn" title="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+          </div>
+          <div style="font-size: 0.8rem; color: #a7f3d0; line-height: 1.5;">
+            <strong>BUMDes Sipodalle</strong><br>
+            Batetangnga Sejahtera
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>
+          Didesain untuk BUMDes Sipodalle Batetangnga Sejahtera
+        </div>
+        <div>
+          Copyright © 2026 BUMDes Digital • Template Versi 2.0
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Application Scripts -->
+  <script src="js/data.js"></script>
+  <script src="js/charts.js"></script>
+  <script src="js/app.js"></script>
+</body>
+
+</html>
